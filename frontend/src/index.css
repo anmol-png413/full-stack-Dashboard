@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root { height: 100%; }
+
+:root{
+	--accent-a: #7c3aed;
+	--accent-b: #06b6d4;
+	--glass: rgba(255,255,255,0.6);
+}
+
+/* header gradient animation */
+.nav-bg{
+	background: linear-gradient(90deg,var(--accent-a),var(--accent-b));
+	background-size: 200% 200%;
+	animation: navGradient 6s ease infinite;
+}
+
+@keyframes navGradient{
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+
+/* subtle logo text gradient */
+.logo-gradient{background: linear-gradient(90deg,var(--accent-b),var(--accent-a));-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+/* fade-in-up used for lists and cards */
+@keyframes fadeUp{from{opacity:0; transform:translateY(10px)}to{opacity:1; transform:translateY(0)}}
+.fade-in-up{opacity:0; animation:fadeUp .36s ease forwards}
+
+/* floating card microinteraction */
+.task-card{transition: transform .18s ease, box-shadow .18s ease}
+.task-card:hover{transform:translateY(-6px) scale(1.01); box-shadow:0 10px 30px rgba(99,102,241,0.12)}
+
+/* input focus glow */
+input[type="text"], input[type="email"], input[type="password"], textarea{transition:box-shadow .18s ease, transform .12s ease}
+input:focus, textarea:focus{box-shadow:0 6px 20px rgba(99,102,241,0.12); transform:translateY(-1px)}
+
+/* animated buttons */
+.btn-animated{transition:transform .14s ease, box-shadow .14s ease}
+.btn-animated:hover{transform:translateY(-3px) scale(1.02)}
+
+/* small utility for dim backgrounds */
+.glass-card{background:linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.7)); backdrop-filter: blur(6px)}
+
+@media (prefers-reduced-motion: reduce){
+	.nav-bg{animation:none}
+	.fade-in-up{animation:none; opacity:1}
+	.task-card:hover{transform:none; box-shadow:none}
+	.btn-animated:hover{transform:none}
+}
+
